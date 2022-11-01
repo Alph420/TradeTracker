@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "756271771025",
+    "project_id": "tradetracker-29b4c",
+    "storage_bucket": "tradetracker-29b4c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:756271771025:android:c5cab9599a3df148997e30",
+        "android_client_info": {
+          "package_name": "com.alphacorporations.tradetracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "756271771025-2v6ag0l2go304ck0i4dkjldfdild1kse.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAe--_6oc7CjmYErhy4mSGvxMxHBceKrPk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "756271771025-2v6ag0l2go304ck0i4dkjldfdild1kse.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
