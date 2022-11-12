@@ -4,9 +4,13 @@
     <item
         android:id="@+id/test_1"
         android:enabled="true"
+        android:icon="@drawable/table_list_solid"
+        android:iconTint="@color/primary"
         android:title="trade"/>
     <item
         android:id="@+id/test_2"
         android:enabled="true"
+        android:icon="@drawable/chart_line_solid"
+        android:iconTint="@color/primary"
         android:title="Perfomance"/>
 </menu>

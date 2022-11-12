@@ -1,5 +1,6 @@
 package com.alphacorporations.tradetracker.ui.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +9,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import com.alphacorporations.tradetracker.R
 import com.alphacorporations.tradetracker.adapter.ViewPagerAdapter
 import com.alphacorporations.tradetracker.databinding.ActivityMainBinding
+import com.alphacorporations.tradetracker.ui.activity.trade.CreateTradeActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,7 +30,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initListener() {
-        binding.bottomNavigation.setOnItemSelectedListener {
+        binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.test_1 -> {
                     binding.pager.currentItem = 0
@@ -44,10 +46,12 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+        binding.fab.setOnClickListener {
+            startActivity(Intent(this, CreateTradeActivity::class.java))
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }
