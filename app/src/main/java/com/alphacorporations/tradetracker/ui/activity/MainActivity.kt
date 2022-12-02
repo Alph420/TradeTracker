@@ -9,7 +9,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import com.alphacorporations.tradetracker.R
 import com.alphacorporations.tradetracker.adapter.ViewPagerAdapter
 import com.alphacorporations.tradetracker.databinding.ActivityMainBinding
-import com.alphacorporations.tradetracker.ui.activity.trade.CreateTradeActivity
 
 class MainActivity : AppCompatActivity() {
 

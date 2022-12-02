@@ -1,4 +1,4 @@
-package com.alphacorporations.tradetracker.ui.activity.trade
+package com.alphacorporations.tradetracker.ui.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -31,7 +31,6 @@ class CreateTradeActivity  : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
         finish()
     }
 }

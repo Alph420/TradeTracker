@@ -27,8 +27,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
-        <activity android:name=".ui.activity.trade.CreateTradeActivity"/>
+        <activity android:name=".ui.activity.CreateTradeActivity" />
     </application>
 
 </manifest>

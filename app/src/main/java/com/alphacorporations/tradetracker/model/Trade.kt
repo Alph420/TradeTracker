@@ -5,7 +5,6 @@ package com.alphacorporations.tradetracker.model
  * Project : TradeTracker
  **/
 data class Trade(
-    val id: Int,
     val date: String,
     val biais: BiaisEnum,
     val ratio: Float,
@@ -13,7 +12,8 @@ data class Trade(
     val lotSize: Float,
     val pe: Float,
     val sl: Float,
-    val tp: List<Float>
+    val tp:Float,
+    //val tp: List<Float>
 )
 
 enum class BiaisEnum {
