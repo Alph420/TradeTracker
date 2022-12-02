@@ -22,7 +22,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <RadioButton
+        <com.google.android.material.radiobutton.MaterialRadioButton
             android:id="@+id/search"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -34,10 +34,9 @@
             android:button="@null"
             android:gravity="center"
             android:text="SHORT"
-            android:textColor="@color/white"
             tools:ignore="TouchTargetSizeCheck" />
 
-        <RadioButton
+        <com.google.android.material.radiobutton.MaterialRadioButton
             android:id="@+id/offer"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -49,7 +48,6 @@
             android:button="@null"
             android:gravity="center"
             android:text="LONG"
-            android:textColor="@color/white"
             tools:ignore="TouchTargetSizeCheck" />
     </RadioGroup>
 
@@ -82,7 +80,8 @@
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.1"/>
+            android:layout_weight="0.025" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -165,16 +164,39 @@
             app:layout_constraintTop_toBottomOf="@+id/stopLossPrice" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/materialTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Leverage"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/slider"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:stepSize="1"
+        android:valueFrom="0.0"
+        android:valueTo="100.0"
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
+        app:layout_constraintStart_toStartOf="@+id/materialTextView"
+        app:layout_constraintTop_toBottomOf="@+id/materialTextView" />
+
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+        app:layout_constraintTop_toBottomOf="@+id/slider">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -182,5 +204,20 @@
 
             android:hint="description" />
     </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/saveBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:text="Save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout4"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

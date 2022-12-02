@@ -24,6 +24,10 @@ class CreateTradeActivity  : AppCompatActivity() {
 
     private fun initListener(){
 
+        binding.saveBtn.setOnClickListener {
+            //TODO CHECK DATA AND SAVED IT
+            finish()
+        }
     }
 
     override fun onBackPressed() {

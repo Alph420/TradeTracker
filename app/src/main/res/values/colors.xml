@@ -2,20 +2,22 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="primary">#757575</color>
-    <color name="secondary">#bdbdbd</color>
+    <color name="primary">#7b1fa2</color>
+    <color name="secondary">#263238</color>
     <color name="green">#CC4CAF50</color>
     <color name="red">#CCE91E1E</color>
     <color name="transparent">#00FFFFFF</color>
+    <color name="text_on_primary">#ffffff</color>
+    <color name="text_on_secondary">#ffffff</color>
 
 
 
     //DARK
-    <color name="primary_dark">#494949</color>
-    <color name="secondary_dark">#8d8d8d</color>
+    <color name="primary_dark">#4a0072</color>
+    <color name="secondary_dark">#000a12</color>
 
     //LIGHT
-    <color name="primary_light">#a4a4a4</color>
-    <color name="secondary_light">#efefef</color>
+    <color name="primary_light">#ae52d4</color>
+    <color name="secondary_light">#4f5b62</color>
 
 </resources>
