@@ -2,7 +2,9 @@ package com.alphacorporations.tradetracker
 
 import android.app.Application
 import android.content.Context
+import dagger.hilt.android.HiltAndroidApp
 
+@HiltAndroidApp
 public class BaseActivity: Application() {
     private var sApplication: Application? = null
 

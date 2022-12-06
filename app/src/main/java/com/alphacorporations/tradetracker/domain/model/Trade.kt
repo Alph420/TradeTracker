@@ -1,4 +1,4 @@
-package com.alphacorporations.tradetracker.model
+package com.alphacorporations.tradetracker.domain.model
 
 /**
  * Created by Julien Jennequin on 01/11/2022 16:02

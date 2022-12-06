@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.alphacorporations.tradetracker.ui.fragment.StatsFragment"
+        android:name="com.alphacorporations.tradetracker.presentation.activity.fragment.StatsFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_stats">
 
