@@ -14,10 +14,6 @@ import javax.inject.Inject
 class CreateTradeViewModel @Inject constructor(private val repository: TradeRepositoryImpl) :
     ViewModel() {
 
-    suspend fun getTrades() {
-        return Converter.fromTradeEntityToTrade(repository.trades)
-    }
-
     fun saveTrade(trade: Trade) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.insert(Converter.fromTradeToTradeEntity(trade))

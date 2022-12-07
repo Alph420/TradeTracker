@@ -4,7 +4,7 @@
 
     <!-- fill/color -->
     <solid
-        android:color="@color/green"/>
+        android:color="@color/green_80"/>
     <corners
         android:bottomRightRadius="8dp"
         android:topRightRadius="8dp" />

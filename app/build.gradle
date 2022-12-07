@@ -42,6 +42,7 @@ android {
 
 dependencies {
     def room_version = "2.4.3"
+    def lifecycle_version = "2.2.0"
 
 
     implementation 'androidx.core:core-ktx:1.8.0'
@@ -51,6 +52,12 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+
+    //SWIPE TO REFRESH
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 
     //FIREBASE
     implementation 'com.google.firebase:firebase-crashlytics:18.3.2'

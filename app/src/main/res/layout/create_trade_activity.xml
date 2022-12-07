@@ -9,7 +9,7 @@
     tools:context=".presentation.activity.CreateTradeActivity">
 
     <RadioGroup
-        android:id="@+id/toggle"
+        android:id="@+id/biaisGroup"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_marginStart="16dp"
@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.radiobutton.MaterialRadioButton
-            android:id="@+id/search"
+            android:id="@+id/bearish"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginStart="1dp"
@@ -32,12 +32,13 @@
             android:layout_weight="1"
             android:background="@drawable/toggle_widget_background_short"
             android:button="@null"
+            android:checked="true"
             android:gravity="center"
             android:text="SHORT"
             tools:ignore="TouchTargetSizeCheck" />
 
         <com.google.android.material.radiobutton.MaterialRadioButton
-            android:id="@+id/offer"
+            android:id="@+id/bullish"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginTop="1dp"
@@ -58,23 +59,24 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/toggle"
-        app:layout_constraintStart_toStartOf="@+id/toggle"
-        app:layout_constraintTop_toBottomOf="@+id/toggle">
+        app:layout_constraintEnd_toEndOf="@+id/biaisGroup"
+        app:layout_constraintStart_toStartOf="@+id/biaisGroup"
+        app:layout_constraintTop_toBottomOf="@+id/biaisGroup">
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.6"
-            app:layout_constraintEnd_toEndOf="@+id/toggle"
-            app:layout_constraintStart_toStartOf="@+id/toggle"
-            app:layout_constraintTop_toBottomOf="@+id/toggle">
+            app:layout_constraintEnd_toEndOf="@+id/biaisGroup"
+            app:layout_constraintStart_toStartOf="@+id/biaisGroup"
+            app:layout_constraintTop_toBottomOf="@+id/biaisGroup">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/pairName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Pair" />
+                android:hint="Pair"
+                android:inputType="textAutoComplete" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <View
@@ -86,9 +88,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
-            app:layout_constraintEnd_toEndOf="@+id/toggle"
-            app:layout_constraintStart_toStartOf="@+id/toggle"
-            app:layout_constraintTop_toBottomOf="@+id/toggle">
+            app:layout_constraintEnd_toEndOf="@+id/biaisGroup"
+            app:layout_constraintStart_toStartOf="@+id/biaisGroup"
+            app:layout_constraintTop_toBottomOf="@+id/biaisGroup">
 
 
             <com.google.android.material.textfield.TextInputEditText
@@ -118,7 +120,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:hint="Entry price" />
+            android:hint="Entry price"
+            android:inputType="number" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -137,6 +140,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Stop loss"
+            android:inputType="number"
 
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -159,6 +163,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:hint="Take profit"
+            android:inputType="number"
             app:layout_constraintEnd_toEndOf="@+id/stopLossPrice"
             app:layout_constraintStart_toStartOf="@+id/stopLossPrice"
             app:layout_constraintTop_toBottomOf="@+id/stopLossPrice" />
@@ -168,10 +173,34 @@
         android:id="@+id/materialTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:text="Leverage"
         app:layout_constraintStart_toStartOf="@+id/textInputLayout"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/leverageCardView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/red_50"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintBottom_toBottomOf="@+id/materialTextView"
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
+        app:layout_constraintTop_toTopOf="@+id/materialTextView">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/leverageText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="4dp"
+            android:gravity="center"
+            android:padding="4dp"
+            android:text="x 25"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:typeface="normal" />
+    </androidx.cardview.widget.CardView>
+
 
     <com.google.android.material.slider.Slider
         android:id="@+id/slider"
@@ -181,6 +210,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:stepSize="1"
+        android:value="25"
         android:valueFrom="0.0"
         android:valueTo="100.0"
         app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
@@ -204,8 +234,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxLength="300"
-            android:hint="description" />
+            android:hint="description"
+            android:maxLength="300" />
     </com.google.android.material.textfield.TextInputLayout>
 
 

@@ -5,7 +5,7 @@ import android.content.Context
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-public class BaseActivity: Application() {
+public class BaseActivity : Application() {
     private var sApplication: Application? = null
 
     fun getApplication(): Application? {

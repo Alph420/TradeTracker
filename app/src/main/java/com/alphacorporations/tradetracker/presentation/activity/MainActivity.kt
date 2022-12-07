@@ -9,7 +9,9 @@ import androidx.navigation.ui.AppBarConfiguration
 import com.alphacorporations.tradetracker.R
 import com.alphacorporations.tradetracker.adapter.ViewPagerAdapter
 import com.alphacorporations.tradetracker.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration

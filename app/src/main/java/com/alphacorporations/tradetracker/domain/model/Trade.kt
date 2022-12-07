@@ -5,14 +5,16 @@ package com.alphacorporations.tradetracker.domain.model
  * Project : TradeTracker
  **/
 data class Trade(
-    val date: String,
+    val date: Long,
+    val pair: String,
     val biais: BiaisEnum,
     val ratio: Float,
     val description: String,
     val lotSize: Float,
     val pe: Float,
     val sl: Float,
-    val tp:Float,
+    val tp: Float,
+    val leverage: Float
     //val tp: List<Float>
 )
 

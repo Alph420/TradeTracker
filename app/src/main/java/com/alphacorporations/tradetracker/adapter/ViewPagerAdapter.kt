@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.alphacorporations.tradetracker.presentation.activity.fragment.StatsFragment
-import com.alphacorporations.tradetracker.presentation.activity.fragment.TradeFragment
+import com.alphacorporations.tradetracker.presentation.fragment.TradeFragment
 
 /**
  * Created by Julien Jennequin on 01/11/2022 15:31

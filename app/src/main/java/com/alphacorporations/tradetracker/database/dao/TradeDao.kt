@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface TradeDao {
     @Query("SELECT * FROM trade")
-    fun getAll(): Flow<List<TradeEntity>>
+    fun getAll(): List<TradeEntity>
 
     @Insert
     fun saveTrade(trade: TradeEntity): Long

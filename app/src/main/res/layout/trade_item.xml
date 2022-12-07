@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="60dp"
-    android:layout_marginHorizontal="4dp"
     app:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="4dp">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/PairIcon"
@@ -24,7 +24,7 @@
 
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/materialTextView3"
+            android:id="@+id/pairName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -37,7 +37,7 @@
 
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/materialTextView4"
+            android:id="@+id/Biais"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -62,22 +62,21 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cardView"
-            android:layout_width="wrap_content"
+            android:id="@+id/pnlCardView"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:backgroundTint="@color/red"
+            android:backgroundTint="@color/red_50"
             app:cardUseCompatPadding="true"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/actualMarketPrice"
             app:layout_constraintTop_toBottomOf="@+id/actualMarketPrice">
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/actualPNLPourcent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="4dp"
                 android:gravity="center"
+                android:layout_margin="4dp"
                 android:text="5.2 %"
                 android:textSize="11sp"
                 android:textStyle="bold"
@@ -94,9 +93,9 @@
             android:textSize="11sp"
             android:textStyle="bold"
             android:typeface="normal"
-            app:layout_constraintBottom_toBottomOf="@+id/cardView"
-            app:layout_constraintEnd_toStartOf="@+id/cardView"
-            app:layout_constraintTop_toTopOf="@+id/cardView" />
+            app:layout_constraintBottom_toBottomOf="@+id/pnlCardView"
+            app:layout_constraintEnd_toStartOf="@+id/pnlCardView"
+            app:layout_constraintTop_toTopOf="@+id/pnlCardView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
