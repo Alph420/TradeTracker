@@ -1,6 +1,6 @@
 package com.alphacorporations.tradetracker.domain.repository
 
-import com.alphacorporations.tradetracker.database.model.TradeEntity
+import com.alphacorporations.tradetracker.data.database.model.TradeEntity
 
 /**
  * Created by Julien Jennequin on 06/12/2022 15:00

@@ -1,9 +1,9 @@
-package com.alphacorporations.tradetracker.viewmodel
+package com.alphacorporations.tradetracker.presentation.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.alphacorporations.tradetracker.database.model.TradeEntity
+import com.alphacorporations.tradetracker.data.database.model.TradeEntity
 import com.alphacorporations.tradetracker.domain.model.Trade
 import com.alphacorporations.tradetracker.domain.repository.TradeRepositoryImpl
 import com.alphacorporations.tradetracker.utils.Converter

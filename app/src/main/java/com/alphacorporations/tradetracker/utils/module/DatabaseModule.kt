@@ -2,7 +2,7 @@ package com.alphacorporations.tradetracker.utils.module
 
 import android.content.Context
 import androidx.room.Room
-import com.alphacorporations.tradetracker.database.AppDatabase
+import com.alphacorporations.tradetracker.data.database.AppDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

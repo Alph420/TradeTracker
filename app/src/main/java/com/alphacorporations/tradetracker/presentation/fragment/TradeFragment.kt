@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.alphacorporations.tradetracker.databinding.FragmentTradeBinding
 import com.alphacorporations.tradetracker.presentation.adapter.TradeAdapter
-import com.alphacorporations.tradetracker.viewmodel.TradeViewModel
+import com.alphacorporations.tradetracker.presentation.viewmodel.TradeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 /**

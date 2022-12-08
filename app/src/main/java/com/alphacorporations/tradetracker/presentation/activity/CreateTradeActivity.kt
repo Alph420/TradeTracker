@@ -10,7 +10,7 @@ import com.alphacorporations.tradetracker.R
 import com.alphacorporations.tradetracker.databinding.CreateTradeActivityBinding
 import com.alphacorporations.tradetracker.domain.model.BiaisEnum
 import com.alphacorporations.tradetracker.domain.model.Trade
-import com.alphacorporations.tradetracker.viewmodel.CreateTradeViewModel
+import com.alphacorporations.tradetracker.presentation.viewmodel.CreateTradeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 

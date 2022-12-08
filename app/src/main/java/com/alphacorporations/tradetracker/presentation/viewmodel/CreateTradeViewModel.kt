@@ -1,4 +1,4 @@
-package com.alphacorporations.tradetracker.viewmodel
+package com.alphacorporations.tradetracker.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
