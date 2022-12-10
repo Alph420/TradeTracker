@@ -1,6 +1,7 @@
 package com.alphacorporations.tradetracker.data.api.client
 
 import okhttp3.HttpUrl
+import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import java.util.concurrent.TimeUnit
@@ -10,7 +11,7 @@ import java.util.concurrent.TimeUnit
  * Project : TradeTracker
  **/
 class CoinMarketCapApiClient(
-    val rootUrl: HttpUrl = HttpUrl.parse("https://pro-api.coinmarketcap.com/")!!,
+    val rootUrl: HttpUrl = "https://pro-api.coinmarketcap.com/".toHttpUrlOrNull()!!,
     val okHttpConfig: OkHttpClient.Builder.() -> OkHttpClient.Builder = {
         retryOnConnectionFailure(false)
             .addInterceptor { chain ->

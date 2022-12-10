@@ -31,7 +31,7 @@ class CreateTradeActivity : AppCompatActivity() {
         binding = CreateTradeActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initListener()
-
+        initObserver()
 
     }
 
@@ -69,6 +69,10 @@ class CreateTradeActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    private fun initObserver() {
+        viewModel.getCryptoList()
     }
 
     private fun saveTrade() {

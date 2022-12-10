@@ -3,9 +3,8 @@ package com.alphacorporations.tradetracker.presentation.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.alphacorporations.tradetracker.data.database.model.TradeEntity
 import com.alphacorporations.tradetracker.domain.model.Trade
-import com.alphacorporations.tradetracker.domain.repository.TradeRepositoryImpl
+import com.alphacorporations.tradetracker.domain.repository.DatabaseRepositoryImpl
 import com.alphacorporations.tradetracker.utils.Converter
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -17,7 +16,7 @@ import javax.inject.Inject
  * Project : TradeTracker
  **/
 @HiltViewModel
-class TradeViewModel @Inject constructor(private val repository: TradeRepositoryImpl) :
+class TradeViewModel @Inject constructor(private val repository: DatabaseRepositoryImpl) :
     ViewModel() {
 
     // Create a LiveData with a String
@@ -25,8 +24,8 @@ class TradeViewModel @Inject constructor(private val repository: TradeRepository
         MutableLiveData<List<Trade>>()
     }
 
-     fun getTrades() {
-        viewModelScope.launch(Dispatchers.IO){
+    fun getTrades() {
+        viewModelScope.launch(Dispatchers.IO) {
             tradeListLiveData.postValue(Converter.fromTradeEntityToTrade(repository.trades.reversed()))
         }
     }
