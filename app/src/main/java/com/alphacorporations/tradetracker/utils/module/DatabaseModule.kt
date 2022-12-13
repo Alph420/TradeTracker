@@ -31,4 +31,5 @@ class DatabaseModule {
     @Provides
     @Singleton
     fun provideTradeDao(appDatabase: AppDatabase) = appDatabase.tradeDao()
+
 }

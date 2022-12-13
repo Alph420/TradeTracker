@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.alphacorporations.tradetracker.domain.model.Trade
-import com.alphacorporations.tradetracker.domain.repository.DatabaseRepositoryImpl
+import com.alphacorporations.tradetracker.domain.repository.DatabaseRepoImpl
 import com.alphacorporations.tradetracker.utils.Converter
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -16,7 +16,7 @@ import javax.inject.Inject
  * Project : TradeTracker
  **/
 @HiltViewModel
-class TradeViewModel @Inject constructor(private val repository: DatabaseRepositoryImpl) :
+class TradeViewModel @Inject constructor(private val repository: DatabaseRepoImpl) :
     ViewModel() {
 
     // Create a LiveData with a String

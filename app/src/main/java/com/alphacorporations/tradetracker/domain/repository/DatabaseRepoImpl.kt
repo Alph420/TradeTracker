@@ -6,8 +6,8 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class DatabaseRepositoryImpl @Inject constructor(private val tradeDao: TradeDao) :
-    DatabaseRepository {
+class DatabaseRepoImpl @Inject constructor(private val tradeDao: TradeDao) :
+    DatabaseRepo {
 
     val trades: List<TradeEntity> get() = tradeDao.getAll()
 

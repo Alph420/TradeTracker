@@ -2,6 +2,8 @@ package com.alphacorporations.tradetracker.presentation.activity
 
 import android.content.res.ColorStateList
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -67,12 +69,103 @@ class CreateTradeActivity : AppCompatActivity() {
 
                 }
             }
+            viewModel.verifyInputValue(
+                binding.entryPrice.text.toString(),
+                binding.stopLossPrice.text.toString(),
+                binding.takeProfitPrice.text.toString(),
+                biais
+            )
         }
+
+        binding.entryPrice.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                viewModel.verifyInputValue(
+                    binding.entryPrice.text.toString(),
+                    binding.stopLossPrice.text.toString(),
+                    binding.takeProfitPrice.text.toString(),
+                    biais
+                )
+            }
+
+            override fun onTextChanged(pe: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun afterTextChanged(pe: Editable?) {
+                viewModel.verifyInputValue(
+                    pe.toString(),
+                    binding.stopLossPrice.text.toString(),
+                    binding.takeProfitPrice.text.toString(),
+                    biais
+                )
+            }
+
+        })
+        binding.stopLossPrice.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                viewModel.verifyInputValue(
+                    binding.entryPrice.text.toString(),
+                    binding.stopLossPrice.text.toString(),
+                    binding.takeProfitPrice.text.toString(),
+                    biais
+                )
+            }
+
+            override fun onTextChanged(pe: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun afterTextChanged(sl: Editable?) {
+                viewModel.verifyInputValue(
+                    binding.entryPrice.text.toString(),
+                    sl.toString(),
+                    binding.takeProfitPrice.text.toString(),
+                    biais
+                )
+            }
+
+        })
+        binding.takeProfitPrice.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                viewModel.verifyInputValue(
+                    binding.entryPrice.text.toString(),
+                    binding.stopLossPrice.text.toString(),
+                    binding.takeProfitPrice.text.toString(),
+                    biais
+                )
+            }
+
+            override fun onTextChanged(pe: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun afterTextChanged(tp: Editable?) {
+                viewModel.verifyInputValue(
+                    binding.entryPrice.text.toString(),
+                    binding.stopLossPrice.text.toString(),
+                    tp.toString(),
+                    biais
+                )
+            }
+
+        })
 
     }
 
     private fun initObserver() {
         viewModel.getCryptoList()
+
+        viewModel.entryPriceEditTextError.observe(this) {
+            binding.entryPrice.error = it
+        }
+
+        viewModel.stopLossEditTextError.observe(this) {
+            binding.stopLossPrice.error = it
+        }
+
+        viewModel.takeProfitEditTextError.observe(this) {
+            binding.takeProfitPrice.error = it
+        }
     }
 
     private fun saveTrade() {

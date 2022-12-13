@@ -8,14 +8,12 @@ import androidx.core.view.WindowCompat
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.alphacorporations.tradetracker.R
-import com.alphacorporations.tradetracker.data.websocket.MessageListener
-import com.alphacorporations.tradetracker.data.websocket.WebSocketManager
 import com.alphacorporations.tradetracker.databinding.ActivityMainBinding
 import com.alphacorporations.tradetracker.presentation.adapter.ViewPagerAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity(), MessageListener {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
@@ -34,7 +32,6 @@ class MainActivity : AppCompatActivity(), MessageListener {
     }
 
     private fun initWebSocket() {
-        WebSocketManager.init(sandboxUrl, this)
     }
 
     private fun initViewPager() {
@@ -42,30 +39,20 @@ class MainActivity : AppCompatActivity(), MessageListener {
     }
 
     private fun initListener() {
-        binding.pager.registerOnPageChangeCallback(object : OnPageChangeCallback(){
-            override fun onPageScrolled(
-                position: Int,
-                positionOffset: Float,
-                positionOffsetPixels: Int
-            ) {
-                super.onPageScrolled(position, positionOffset, positionOffsetPixels)
-            }
+        binding.pager.registerOnPageChangeCallback(object : OnPageChangeCallback() {
 
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
-                when(position){
-                    0->{
+                when (position) {
+                    0 -> {
                         binding.bottomNavigationView.selectedItemId = R.id.test_1
                     }
-                    1->{
+                    1 -> {
                         binding.bottomNavigationView.selectedItemId = R.id.test_2
                     }
                 }
             }
 
-            override fun onPageScrollStateChanged(state: Int) {
-                super.onPageScrollStateChanged(state)
-            }
         })
         binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
@@ -91,22 +78,6 @@ class MainActivity : AppCompatActivity(), MessageListener {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
-    }
-
-    override fun onConnectSuccess() {
-        TODO("Not yet implemented")
-    }
-
-    override fun onConnectFailed() {
-        TODO("Not yet implemented")
-    }
-
-    override fun onClose() {
-        TODO("Not yet implemented")
-    }
-
-    override fun onMessage(text: String?) {
-        TODO("Not yet implemented")
     }
 
 }
