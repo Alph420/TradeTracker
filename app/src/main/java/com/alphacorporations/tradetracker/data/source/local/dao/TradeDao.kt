@@ -1,11 +1,10 @@
-package com.alphacorporations.tradetracker.data.database.dao
+package com.alphacorporations.tradetracker.data.source.local.dao
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import com.alphacorporations.tradetracker.data.database.model.TradeEntity
-import kotlinx.coroutines.flow.Flow
+import com.alphacorporations.tradetracker.data.source.local.model.TradeEntity
 
 @Dao
 interface TradeDao {

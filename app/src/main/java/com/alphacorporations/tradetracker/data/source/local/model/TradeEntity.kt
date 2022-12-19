@@ -1,4 +1,4 @@
-package com.alphacorporations.tradetracker.data.database.model
+package com.alphacorporations.tradetracker.data.source.local.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

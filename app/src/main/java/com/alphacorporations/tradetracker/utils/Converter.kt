@@ -1,6 +1,6 @@
 package com.alphacorporations.tradetracker.utils
 
-import com.alphacorporations.tradetracker.data.database.model.TradeEntity
+import com.alphacorporations.tradetracker.data.source.local.model.TradeEntity
 import com.alphacorporations.tradetracker.domain.model.BiaisEnum
 import com.alphacorporations.tradetracker.domain.model.Trade
 

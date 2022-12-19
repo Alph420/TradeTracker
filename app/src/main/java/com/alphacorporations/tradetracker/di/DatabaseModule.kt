@@ -1,8 +1,8 @@
-package com.alphacorporations.tradetracker.utils.module
+package com.alphacorporations.tradetracker.di
 
 import android.content.Context
 import androidx.room.Room
-import com.alphacorporations.tradetracker.data.database.AppDatabase
+import com.alphacorporations.tradetracker.data.source.local.AppDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

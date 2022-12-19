@@ -1,7 +1,7 @@
-package com.alphacorporations.tradetracker.domain.repository
+package com.alphacorporations.tradetracker.data.repository
 
-import com.alphacorporations.tradetracker.data.database.dao.TradeDao
-import com.alphacorporations.tradetracker.data.database.model.TradeEntity
+import com.alphacorporations.tradetracker.data.source.local.dao.TradeDao
+import com.alphacorporations.tradetracker.data.source.local.model.TradeEntity
 import javax.inject.Inject
 import javax.inject.Singleton
 

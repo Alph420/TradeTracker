@@ -1,4 +1,4 @@
-package com.alphacorporations.tradetracker.domain.repository
+package com.alphacorporations.tradetracker.data.repository
 
 import com.alphacorporations.tradetracker.data.model.HistoricalListing
 import retrofit2.Response

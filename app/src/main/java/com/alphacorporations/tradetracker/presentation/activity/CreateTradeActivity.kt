@@ -166,6 +166,10 @@ class CreateTradeActivity : AppCompatActivity() {
         viewModel.takeProfitEditTextError.observe(this) {
             binding.takeProfitPrice.error = it
         }
+
+        viewModel.btnSaveState.observe(this) {
+            binding.saveBtn.isEnabled = it
+        }
     }
 
     private fun saveTrade() {
