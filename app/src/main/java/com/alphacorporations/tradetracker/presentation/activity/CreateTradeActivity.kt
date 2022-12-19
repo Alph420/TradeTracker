@@ -8,6 +8,7 @@ import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.widget.addTextChangedListener
 import com.alphacorporations.tradetracker.R
 import com.alphacorporations.tradetracker.databinding.CreateTradeActivityBinding
 import com.alphacorporations.tradetracker.domain.model.BiaisEnum
@@ -51,11 +52,12 @@ class CreateTradeActivity : AppCompatActivity() {
         }
 
         binding.slider.addOnChangeListener { slider, value, fromUser ->
-            binding.leverageText.text = "x $value"
+            if (value in 1F..100F) {
+                binding.leverageText.setText("${value.toInt()}")
+            }
         }
 
         binding.biaisGroup.setOnCheckedChangeListener { group, checkId ->
-            Log.d(this.javaClass.name, checkId.toString())
             when (checkId) {
                 R.id.bearish -> {
                     binding.leverageCardView.backgroundTintList =
@@ -101,6 +103,7 @@ class CreateTradeActivity : AppCompatActivity() {
             }
 
         })
+
         binding.stopLossPrice.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 viewModel.verifyInputValue(
@@ -125,6 +128,7 @@ class CreateTradeActivity : AppCompatActivity() {
             }
 
         })
+
         binding.takeProfitPrice.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 viewModel.verifyInputValue(
@@ -149,6 +153,24 @@ class CreateTradeActivity : AppCompatActivity() {
             }
 
         })
+
+
+        binding.leverageText.addTextChangedListener {
+            if (binding.leverageText.text!!.isNotEmpty()) {
+                if (it.toString().toInt() > 100) {
+                    binding.leverageText.setText("100")
+                }
+                if (it.toString().toInt() < 1) {
+                    binding.leverageText.setText("1")
+                }
+                if (it.toString().toFloat() in 1F..100F) {
+
+                    binding.slider.value = it.toString().toFloat()
+                }
+            } else {
+                binding.leverageText.setText("1")
+            }
+        }
 
     }
 

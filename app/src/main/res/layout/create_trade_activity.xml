@@ -187,18 +187,36 @@
         app:layout_constraintBottom_toBottomOf="@+id/materialTextView"
         app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
         app:layout_constraintTop_toTopOf="@+id/materialTextView">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/leverageText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="4dp"
-            android:gravity="center"
-            android:padding="4dp"
-            android:text="x 25"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:typeface="normal" />
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginStart="6dp"
+        android:text="x"/>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/leverageText"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_weight="2"
+        android:inputType="number"
+        android:background="@color/transparent"
+        android:padding="5dp"
+        android:layout_marginEnd="6dp"
+        android:text="25"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:typeface="normal" />
+</LinearLayout>
     </androidx.cardview.widget.CardView>
 
 
@@ -211,7 +229,7 @@
         android:layout_marginEnd="8dp"
         android:stepSize="1"
         android:value="25"
-        android:valueFrom="0.0"
+        android:valueFrom="1.0"
         android:valueTo="100.0"
         app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
         app:layout_constraintStart_toStartOf="@+id/materialTextView"
