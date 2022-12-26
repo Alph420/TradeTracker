@@ -20,7 +20,7 @@ class TradeFragment : Fragment() {
     private var _binding: FragmentTradeBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: TradeViewModel by viewModels()
+    private val viewModel by viewModels<TradeViewModel>()
 
     lateinit var adapter: TradeAdapter
 

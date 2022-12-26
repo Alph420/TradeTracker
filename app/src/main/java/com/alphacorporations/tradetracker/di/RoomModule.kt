@@ -16,13 +16,13 @@ import javax.inject.Singleton
  **/
 @Module
 @InstallIn(SingletonComponent::class)
-class DatabaseModule {
+object RoomModule {
 
     @Provides
     @Singleton
-    fun provideAppDatabase(@ApplicationContext appContext: Context): AppDatabase =
+    fun provideAppDatabase(@ApplicationContext context: Context): AppDatabase =
         Room.databaseBuilder(
-            appContext,
+            context,
             AppDatabase::class.java,
             "trade_tracker_database"
         ).build() // The reason we can construct a database for the repo

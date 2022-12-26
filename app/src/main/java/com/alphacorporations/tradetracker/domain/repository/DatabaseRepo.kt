@@ -1,4 +1,4 @@
-package com.alphacorporations.tradetracker.data.repository
+package com.alphacorporations.tradetracker.domain.repository
 
 import com.alphacorporations.tradetracker.data.source.local.model.TradeEntity
 
@@ -7,5 +7,6 @@ import com.alphacorporations.tradetracker.data.source.local.model.TradeEntity
  * Project : TradeTracker
  **/
 interface DatabaseRepo {
+    suspend fun getAllTrade(): List<TradeEntity>
     suspend fun insert(trade: TradeEntity)
 }

@@ -18,20 +18,13 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
 
-    private val sandboxUrl = "wss://ws-sandbox.coinapi.io/v1/"
-    private val noSandboxUrl = "wss://ws.coinapi.io/v1/"
-
     override fun onCreate(savedInstanceState: Bundle?) {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        initWebSocket()
         initViewPager()
         initListener()
-    }
-
-    private fun initWebSocket() {
     }
 
     private fun initViewPager() {

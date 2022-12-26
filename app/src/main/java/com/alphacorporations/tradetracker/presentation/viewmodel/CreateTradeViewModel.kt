@@ -30,7 +30,6 @@ class CreateTradeViewModel @Inject constructor(
 
     fun getCryptoList() {
         viewModelScope.launch(Dispatchers.IO) {
-            cmcApiRepo.getHistoricalListings()
         }
     }
 
