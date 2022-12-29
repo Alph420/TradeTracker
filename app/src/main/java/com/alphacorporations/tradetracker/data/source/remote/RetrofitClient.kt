@@ -1,8 +1,11 @@
 package com.alphacorporations.tradetracker.data.source.remote
 
+import com.alphacorporations.tradetracker.BuildConfig
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.Request
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -17,11 +20,22 @@ object RetrofitClient {
         GsonBuilder().setLenient().create()
     }
 
+    var header = Interceptor { chain ->
+        val original: Request = chain.request()
 
-    val httpClient: OkHttpClient by lazy {
+        val request: Request = original.newBuilder()
+            .header("X-CMC_PRO_API_KEY", BuildConfig.CoinMarketCapApiKey)
+            .method(original.method, original.body)
+            .build()
+
+        chain.proceed(request)
+    }
+
+    private val httpClient: OkHttpClient by lazy {
         val loggingInterceptor = HttpLoggingInterceptor()
         loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
-        OkHttpClient.Builder().addInterceptor(interceptor = loggingInterceptor).build()
+        OkHttpClient.Builder().addInterceptor(interceptor = loggingInterceptor)
+            .addInterceptor(header).build()
     }
 
     private val retrofit: Retrofit by lazy {

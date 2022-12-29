@@ -17,30 +17,51 @@ data class Coin(
     val symbol: String,
     val slug: String,
 
-    @SerializedName("cmc_rank")
-    val cmcRank: Long? = null,
-
     @SerializedName("num_market_pairs")
     val numMarketPairs: Long,
-
-    @SerializedName("circulating_supply")
-    val circulatingSupply: Long,
-
-    @SerializedName("total_supply")
-    val totalSupply: Long,
-
-    @SerializedName("max_supply")
-    val maxSupply: Long,
-
-    @SerializedName("last_updated")
-    val lastUpdated: String,
 
     @SerializedName("date_added")
     val dateAdded: String,
 
     val tags: List<String>,
-    val platform: Any? = null,
-    val quote: Map<String, Quote>
+
+    @SerializedName("max_supply")
+    val maxSupply: Long? = null,
+
+    @SerializedName("circulating_supply")
+    val circulatingSupply: Double,
+
+    @SerializedName("total_supply")
+    val totalSupply: Double,
+
+    val platform: Platform? = null,
+
+    @SerializedName("cmc_rank")
+    val cmcRank: Long,
+
+    @SerializedName("self_reported_circulating_supply")
+    val selfReportedCirculatingSupply: Double? = null,
+
+    @SerializedName("self_reported_market_cap")
+    val selfReportedMarketCap: Double? = null,
+
+    @SerializedName("tvl_ratio")
+    val tvlRatio: Double? = null,
+
+    @SerializedName("last_updated")
+    val lastUpdated: String,
+
+    val quote: Quote
+)
+
+data class Platform(
+    val id: Long,
+    val name: String,
+    val symbol: String,
+    val slug: String,
+
+    @SerializedName("token_address")
+    val tokenAddress: String
 )
 
 data class Quote(

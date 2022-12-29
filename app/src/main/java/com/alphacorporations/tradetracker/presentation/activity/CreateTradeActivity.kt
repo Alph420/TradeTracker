@@ -52,7 +52,13 @@ class CreateTradeActivity : AppCompatActivity() {
 
         binding.slider.addOnChangeListener { slider, value, fromUser ->
             if (value in 1F..100F) {
-                binding.leverageText.setText("${value.toInt()}")
+                viewModel.setLeverage(value)
+                if (binding.lotSize.text!!.isNotEmpty()) {
+                    viewModel.calculateTradeData(
+                        binding.lotSize.text.toString().toFloat(),
+                        binding.entryPrice.text.toString().toFloat()
+                    )
+                }
             }
         }
 
@@ -78,6 +84,25 @@ class CreateTradeActivity : AppCompatActivity() {
             )
         }
 
+        binding.lotSize.addTextChangedListener {
+            object : TextWatcher {
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun afterTextChanged(pe: Editable?) {
+                    if (binding.lotSize.text!!.isNotEmpty() && binding.entryPrice.text!!.isNotEmpty()) {
+                        viewModel.calculateTradeData(
+                            binding.lotSize.text.toString().toFloat(),
+                            binding.entryPrice.text.toString().toFloat()
+                        )
+                    }
+                }
+            }
+        }
+
         binding.entryPrice.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 viewModel.verifyInputValue(
@@ -99,6 +124,13 @@ class CreateTradeActivity : AppCompatActivity() {
                     binding.takeProfitPrice.text.toString(),
                     biais
                 )
+
+                if (binding.lotSize.text!!.isNotEmpty()) {
+                    viewModel.calculateTradeData(
+                        binding.lotSize.text.toString().toFloat(),
+                        binding.entryPrice.text.toString().toFloat()
+                    )
+                }
             }
 
         })
@@ -157,24 +189,28 @@ class CreateTradeActivity : AppCompatActivity() {
         binding.leverageText.addTextChangedListener {
             if (binding.leverageText.text!!.isNotEmpty()) {
                 if (it.toString().toInt() > 100) {
-                    binding.leverageText.setText("100")
+                    viewModel.setLeverage(100f)
                 }
                 if (it.toString().toInt() < 1) {
-                    binding.leverageText.setText("1")
+                    viewModel.setLeverage(1f)
                 }
                 if (it.toString().toFloat() in 1F..100F) {
-
-                    binding.slider.value = it.toString().toFloat()
+                    viewModel.setLeverage(it.toString().toFloat())
                 }
             } else {
-                binding.leverageText.setText("1")
+                viewModel.setLeverage(1f)
+
             }
         }
-
+        if (binding.lotSize.text!!.isNotEmpty() && binding.entryPrice.text!!.isNotEmpty()) {
+            viewModel.calculateTradeData(
+                binding.lotSize.text.toString().toFloat(),
+                binding.entryPrice.text.toString().toFloat()
+            )
+        }
     }
 
     private fun initObserver() {
-        viewModel.getCryptoList()
 
         viewModel.entryPriceEditTextError.observe(this) {
             binding.entryPrice.error = it
@@ -190,6 +226,19 @@ class CreateTradeActivity : AppCompatActivity() {
 
         viewModel.btnSaveState.observe(this) {
             binding.saveBtn.isEnabled = it
+        }
+
+        viewModel.positionValue.observe(this) {
+            binding.positionValue.text = it.toString()
+        }
+
+        viewModel.positionMargin.observe(this) {
+            binding.positionMargin.text = it.toString()
+        }
+
+        viewModel.leverageValue.observe(this) {
+            binding.leverageText.setText("${it.toInt()}")
+
         }
     }
 

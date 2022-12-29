@@ -9,6 +9,6 @@ import retrofit2.http.GET
  * Project : TradeTracker
  **/
 interface CmcApiService {
-    @GET("/v1/cryptocurrency/listings/historical")
-    fun getHistoricalListings(): Response<HistoricalListing>
+    @GET("/v1/cryptocurrency/listings/latest")
+    suspend fun getHistoricalListings(): Response<HistoricalListing>
 }

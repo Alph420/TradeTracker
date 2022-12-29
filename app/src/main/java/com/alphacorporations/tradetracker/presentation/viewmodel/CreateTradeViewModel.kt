@@ -1,9 +1,10 @@
 package com.alphacorporations.tradetracker.presentation.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.alphacorporations.tradetracker.data.repository.DatabaseRepoImpl
+import com.alphacorporations.tradetracker.data.repository.CmcRepoImpl
 import com.alphacorporations.tradetracker.domain.model.BiaisEnum
 import com.alphacorporations.tradetracker.domain.model.Trade
 import com.alphacorporations.tradetracker.utils.Converter
@@ -14,22 +15,29 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CreateTradeViewModel @Inject constructor(
-    private val dbRepo: DatabaseRepoImpl
+    private val cmcRepo: CmcRepoImpl
 ) : ViewModel() {
 
     val entryPriceEditTextError: MutableLiveData<String?> = MutableLiveData(null)
     val stopLossEditTextError: MutableLiveData<String?> = MutableLiveData(null)
     val takeProfitEditTextError: MutableLiveData<String?> = MutableLiveData(null)
     val btnSaveState: MutableLiveData<Boolean> = MutableLiveData(false)
+    val leverageValue: MutableLiveData<Int> = MutableLiveData(1)
+    val positionValue: MutableLiveData<Float> = MutableLiveData(0.0f)
+    val positionMargin: MutableLiveData<Float> = MutableLiveData(0.0f)
 
     fun saveTrade(trade: Trade) {
         viewModelScope.launch(Dispatchers.IO) {
-            dbRepo.insert(Converter.fromTradeToTradeEntity(trade))
+            cmcRepo.insert(Converter.fromTradeToTradeEntity(trade))
         }
     }
 
     fun getCryptoList() {
         viewModelScope.launch(Dispatchers.IO) {
+            var test = cmcRepo.getHistoricalListings()
+            if (test != null) {
+                Log.d(this.javaClass.name, test.toString())
+            }
         }
     }
 
@@ -98,6 +106,15 @@ class CreateTradeViewModel @Inject constructor(
             }
             btnSaveState.postValue(false)
         }
+    }
+
+    fun calculateTradeData(qte: Float, pe: Float) {
+        positionValue.postValue(qte * pe)
+        positionMargin.postValue((qte * pe) / leverageValue.value!!)
+    }
+
+    fun setLeverage(value: Float) {
+        leverageValue.postValue(value.toInt())
     }
 
 }

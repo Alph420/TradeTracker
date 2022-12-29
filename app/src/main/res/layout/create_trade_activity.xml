@@ -52,210 +52,345 @@
             tools:ignore="TouchTargetSizeCheck" />
     </RadioGroup>
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/biaisGroup"
-        app:layout_constraintStart_toStartOf="@+id/biaisGroup"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/saveBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/biaisGroup">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.6"
-            app:layout_constraintEnd_toEndOf="@+id/biaisGroup"
-            app:layout_constraintStart_toStartOf="@+id/biaisGroup"
-            app:layout_constraintTop_toBottomOf="@+id/biaisGroup">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/pairName"
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Pair"
-                android:inputType="textAutoComplete" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-        <View
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.025" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    app:layout_constraintEnd_toEndOf="@+id/biaisGroup"
+                    app:layout_constraintStart_toStartOf="@+id/biaisGroup"
+                    app:layout_constraintTop_toBottomOf="@+id/biaisGroup">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.3"
-            app:layout_constraintEnd_toEndOf="@+id/biaisGroup"
-            app:layout_constraintStart_toStartOf="@+id/biaisGroup"
-            app:layout_constraintTop_toBottomOf="@+id/biaisGroup">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/pairName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Pair"
+                        android:inputType="textAutoComplete" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.025" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.3"
+                    app:layout_constraintEnd_toEndOf="@+id/biaisGroup"
+                    app:layout_constraintStart_toStartOf="@+id/biaisGroup"
+                    app:layout_constraintTop_toBottomOf="@+id/biaisGroup">
 
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/lotSize"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/lotSize"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Qty"
+                        android:inputType="numberDecimal" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Qty" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/stopLossPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Stop loss"
+                    android:inputType="numberDecimal"
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
+            </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+                app:layout_constraintStart_toStartOf="@+id/linearLayout"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout"
-        app:layout_constraintTop_toBottomOf="@id/linearLayout">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/entryPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Entry price"
+                    android:inputType="numberDecimal" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/entryPrice"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:hint="Entry price"
-            android:inputType="number" />
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
+                app:layout_constraintStart_toStartOf="@+id/textInputLayout2"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/takeProfitPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Take profit"
+                    android:inputType="numberDecimal"
+                    app:layout_constraintEnd_toEndOf="@+id/stopLossPrice"
+                    app:layout_constraintStart_toStartOf="@+id/stopLossPrice"
+                    app:layout_constraintTop_toBottomOf="@+id/stopLossPrice" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/stopLossPrice"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Stop loss"
-            android:inputType="number"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
+                app:layout_constraintStart_toStartOf="@+id/textInputLayout2"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
-    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/pnlRealizedET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Realized P&amp;L"
+                    android:inputType="numberSigned"
+                    app:layout_constraintEnd_toEndOf="@+id/stopLossPrice"
+                    app:layout_constraintStart_toStartOf="@+id/stopLossPrice"
+                    app:layout_constraintTop_toBottomOf="@+id/stopLossPrice" />
+            </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/materialTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Leverage"
+                app:layout_constraintStart_toStartOf="@+id/textInputLayout5"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout5" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/textInputLayout3"
-        app:layout_constraintStart_toStartOf="@+id/textInputLayout3"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/leverageCardView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/red_50"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintBottom_toBottomOf="@+id/materialTextView"
+                app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
+                app:layout_constraintTop_toTopOf="@+id/materialTextView">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/takeProfitPrice"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:hint="Take profit"
-            android:inputType="number"
-            app:layout_constraintEnd_toEndOf="@+id/stopLossPrice"
-            app:layout_constraintStart_toStartOf="@+id/stopLossPrice"
-            app:layout_constraintTop_toBottomOf="@+id/stopLossPrice" />
-    </com.google.android.material.textfield.TextInputLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/materialTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Leverage"
-        app:layout_constraintStart_toStartOf="@+id/textInputLayout"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="6dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="x"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/leverageCardView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/red_50"
-        app:cardUseCompatPadding="true"
-        app:layout_constraintBottom_toBottomOf="@+id/materialTextView"
-        app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
-        app:layout_constraintTop_toTopOf="@+id/materialTextView">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/leverageText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="6dp"
+                        android:layout_weight="2"
+                        android:background="@color/transparent"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:padding="5dp"
+                        android:text="10"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:typeface="normal" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-    <com.google.android.material.textview.MaterialTextView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:layout_weight="1"
-        android:textSize="15sp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:layout_marginStart="6dp"
-        android:text="x"/>
+            <com.google.android.material.slider.Slider
+                android:id="@+id/slider"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:stepSize="1"
+                android:value="25"
+                android:valueFrom="1.0"
+                android:valueTo="100.0"
+                app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
+                app:layout_constraintStart_toStartOf="@+id/materialTextView"
+                app:layout_constraintTop_toBottomOf="@+id/leverageCardView" />
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/leverageText"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:layout_weight="2"
-        android:inputType="number"
-        android:background="@color/transparent"
-        android:padding="5dp"
-        android:layout_marginEnd="6dp"
-        android:text="25"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        android:typeface="normal" />
-</LinearLayout>
-    </androidx.cardview.widget.CardView>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout4"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="16dp"
+                app:counterEnabled="true"
+                app:counterMaxLength="300"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView">
 
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="description"
+                    android:maxLength="300" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.slider.Slider
-        android:id="@+id/slider"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:stepSize="1"
-        android:value="25"
-        android:valueFrom="1.0"
-        android:valueTo="100.0"
-        app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
-        app:layout_constraintStart_toStartOf="@+id/materialTextView"
-        app:layout_constraintTop_toBottomOf="@+id/materialTextView" />
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintEnd_toEndOf="@+id/leverageCardView"
+                app:layout_constraintStart_toStartOf="@+id/materialTextView"
+                app:layout_constraintTop_toBottomOf="@+id/slider">
 
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="8dp">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        app:counterEnabled="true"
-        app:counterMaxLength="300"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/slider">
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/materialTextView7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Trade Data:"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="description"
-            android:maxLength="300" />
-    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/materialTextView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:text="Position Value :"
+                        app:layout_constraintStart_toStartOf="@+id/materialTextView7"
+                        app:layout_constraintTop_toBottomOf="@+id/materialTextView7" />
 
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/positionValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/materialTextView4"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/materialTextView4"
+                        tools:text="150 USDT" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/materialTextView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Position Margin :"
+                        app:layout_constraintStart_toStartOf="@+id/materialTextView4"
+                        app:layout_constraintTop_toBottomOf="@+id/materialTextView4" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/positionMargin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/materialTextView5"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/materialTextView5"
+                        tools:text="15 USDT" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/materialTextView6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Realized P&amp;L (%) :"
+                        app:layout_constraintStart_toStartOf="@+id/materialTextView5"
+                        app:layout_constraintTop_toBottomOf="@+id/materialTextView5" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="@+id/materialTextView6"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/materialTextView6">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/realizedPnLField"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            app:layout_constraintBottom_toBottomOf="@+id/materialTextView6"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/materialTextView6"
+                            tools:text="1.48 USDT" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/realizedPnLFieldPourcent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            app:layout_constraintBottom_toBottomOf="@+id/materialTextView6"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/realizedPnLField"
+                            app:layout_constraintTop_toTopOf="@+id/realizedPnLField"
+                            tools:text="(7.20%)" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/saveBtn"
@@ -267,8 +402,6 @@
         android:text="Save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout4"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
