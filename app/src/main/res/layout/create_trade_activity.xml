@@ -240,7 +240,7 @@
                         android:gravity="center"
                         android:inputType="number"
                         android:padding="5dp"
-                        android:text="10"
+                        tools:text="10"
                         android:textSize="15sp"
                         android:textStyle="bold"
                         android:typeface="normal" />
@@ -254,7 +254,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:stepSize="1"
-                android:value="25"
+                android:value="1"
                 android:valueFrom="1.0"
                 android:valueTo="100.0"
                 app:layout_constraintEnd_toEndOf="@+id/textInputLayout"

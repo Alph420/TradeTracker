@@ -25,6 +25,8 @@ class CreateTradeViewModel @Inject constructor(
     val leverageValue: MutableLiveData<Int> = MutableLiveData(1)
     val positionValue: MutableLiveData<Float> = MutableLiveData(0.0f)
     val positionMargin: MutableLiveData<Float> = MutableLiveData(0.0f)
+    val realizedPnL: MutableLiveData<Float> = MutableLiveData(0.0f)
+    val realizedPnLPourcent: MutableLiveData<Float> = MutableLiveData(0.0f)
 
     fun saveTrade(trade: Trade) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -109,12 +111,21 @@ class CreateTradeViewModel @Inject constructor(
     }
 
     fun calculateTradeData(qte: Float, pe: Float) {
-        positionValue.postValue(qte * pe)
-        positionMargin.postValue((qte * pe) / leverageValue.value!!)
+        positionValue.value = qte * pe
+        setLeverage(leverageValue.value!!)
     }
 
-    fun setLeverage(value: Float) {
-        leverageValue.postValue(value.toInt())
+    fun calculateRealizedPnL(pnl: Float) {
+        realizedPnL.value = pnl
+        realizedPnLPourcent.value = (pnl * 100) / positionMargin.value!!
+    }
+
+
+    fun setLeverage(value: Int) {
+        leverageValue.value = value
+        positionMargin.value = positionValue.value!! / value
+
+        calculateRealizedPnL(realizedPnL.value!!)
     }
 
 }

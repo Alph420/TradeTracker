@@ -7,7 +7,6 @@ import android.text.TextWatcher
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.widget.addTextChangedListener
 import com.alphacorporations.tradetracker.R
 import com.alphacorporations.tradetracker.databinding.CreateTradeActivityBinding
 import com.alphacorporations.tradetracker.domain.model.BiaisEnum
@@ -52,7 +51,7 @@ class CreateTradeActivity : AppCompatActivity() {
 
         binding.slider.addOnChangeListener { slider, value, fromUser ->
             if (value in 1F..100F) {
-                viewModel.setLeverage(value)
+                viewModel.setLeverage(value.toInt())
                 if (binding.lotSize.text!!.isNotEmpty()) {
                     viewModel.calculateTradeData(
                         binding.lotSize.text.toString().toFloat(),
@@ -84,24 +83,23 @@ class CreateTradeActivity : AppCompatActivity() {
             )
         }
 
-        binding.lotSize.addTextChangedListener {
-            object : TextWatcher {
-                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                }
+        binding.lotSize.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
 
-                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                }
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
 
-                override fun afterTextChanged(pe: Editable?) {
-                    if (binding.lotSize.text!!.isNotEmpty() && binding.entryPrice.text!!.isNotEmpty()) {
-                        viewModel.calculateTradeData(
-                            binding.lotSize.text.toString().toFloat(),
-                            binding.entryPrice.text.toString().toFloat()
-                        )
-                    }
+            override fun afterTextChanged(pe: Editable?) {
+                if (binding.lotSize.text!!.isNotEmpty() && binding.entryPrice.text!!.isNotEmpty()) {
+                    viewModel.calculateTradeData(
+                        binding.lotSize.text.toString().toFloat(),
+                        binding.entryPrice.text.toString().toFloat()
+                    )
                 }
             }
-        }
+        })
+
 
         binding.entryPrice.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -146,7 +144,6 @@ class CreateTradeActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(pe: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
             }
 
             override fun afterTextChanged(sl: Editable?) {
@@ -186,22 +183,50 @@ class CreateTradeActivity : AppCompatActivity() {
         })
 
 
-        binding.leverageText.addTextChangedListener {
-            if (binding.leverageText.text!!.isNotEmpty()) {
-                if (it.toString().toInt() > 100) {
-                    viewModel.setLeverage(100f)
+        binding.leverageText.addTextChangedListener(
+            object : TextWatcher {
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 }
-                if (it.toString().toInt() < 1) {
-                    viewModel.setLeverage(1f)
-                }
-                if (it.toString().toFloat() in 1F..100F) {
-                    viewModel.setLeverage(it.toString().toFloat())
-                }
-            } else {
-                viewModel.setLeverage(1f)
 
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun afterTextChanged(p0: Editable?) {
+                    if (binding.leverageText.text!!.isNotEmpty() && binding.leverageText.text.toString()
+                            .toInt() != viewModel.leverageValue.value
+                    ) {
+                        if (p0.toString().toInt() > 100) {
+                            viewModel.setLeverage(100)
+                        }
+                        if (p0.toString().toInt() < 1) {
+                            viewModel.setLeverage(1)
+                        }
+                        if (p0.toString().toFloat() in 1F..100F && p0.toString()
+                                .toInt() != viewModel.leverageValue.value
+                        ) {
+                            viewModel.setLeverage(p0.toString().toInt())
+                        }
+                    }
+                }
+            })
+
+        binding.pnlRealizedET.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
-        }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+                if (binding.pnlRealizedET.text!!.isNotEmpty()) {
+                    viewModel.calculateRealizedPnL(p0.toString().toFloat())
+                } else {
+                    viewModel.calculateRealizedPnL(0f)
+                }
+            }
+
+        })
+
         if (binding.lotSize.text!!.isNotEmpty() && binding.entryPrice.text!!.isNotEmpty()) {
             viewModel.calculateTradeData(
                 binding.lotSize.text.toString().toFloat(),
@@ -233,11 +258,25 @@ class CreateTradeActivity : AppCompatActivity() {
         }
 
         viewModel.positionMargin.observe(this) {
-            binding.positionMargin.text = it.toString()
+            binding.positionMargin.text = String.format("%.2f", it)
+        }
+
+        viewModel.realizedPnLPourcent.observe(this) {
+            if (it != 0f) {
+                binding.realizedPnLField.text = "${binding.pnlRealizedET.text} $"
+                binding.realizedPnLFieldPourcent.text = "(${String.format("%.2f", it)} %)"
+            } else {
+                binding.realizedPnLField.text = "0 $"
+
+                binding.realizedPnLFieldPourcent.text = ""
+            }
         }
 
         viewModel.leverageValue.observe(this) {
             binding.leverageText.setText("${it.toInt()}")
+            if (it.toFloat() in 1F..100F && it.toFloat().toInt() != viewModel.leverageValue.value) {
+                viewModel.setLeverage(it.toInt())
+            }
 
         }
     }
