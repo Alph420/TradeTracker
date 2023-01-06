@@ -116,8 +116,16 @@ class CreateTradeViewModel @Inject constructor(
     }
 
     fun calculateRealizedPnL(pnl: Float) {
-        realizedPnL.value = pnl
-        realizedPnLPourcent.value = (pnl * 100) / positionMargin.value!!
+        if (pnl == 0f) {
+            realizedPnL.value = pnl
+            realizedPnLPourcent.value = 0f
+        } else {
+            realizedPnL.value = pnl
+            if (positionMargin.value != 0f) realizedPnLPourcent.value =
+                (pnl * 100) / positionMargin.value!!
+
+        }
+
     }
 
 

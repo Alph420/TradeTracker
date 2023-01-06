@@ -210,7 +210,6 @@
                 android:id="@+id/leverageCardView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/red_50"
                 app:cardUseCompatPadding="true"
                 app:layout_constraintBottom_toBottomOf="@+id/materialTextView"
                 app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
@@ -223,27 +222,30 @@
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="6dp"
-                        android:layout_weight="1"
+                        android:layout_marginEnd="6dp"
+                        android:layout_weight="0.2"
+                        android:background="@color/transparent"
                         android:gravity="center"
+                        android:inputType="number"
+                        android:padding="5dp"
                         android:text="x"
                         android:textSize="15sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:typeface="normal" />
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/leverageText"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginEnd="6dp"
-                        android:layout_weight="2"
+                        android:layout_weight="0.8"
                         android:background="@color/transparent"
                         android:gravity="center"
                         android:inputType="number"
-                        android:padding="5dp"
-                        tools:text="10"
                         android:textSize="15sp"
                         android:textStyle="bold"
-                        android:typeface="normal" />
+                        android:typeface="normal"
+                        tools:text="10" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -358,8 +360,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
-                        android:orientation="horizontal"
-                        app:layout_constraintBottom_toBottomOf="@+id/materialTextView6"
+                        android:gravity="right"
+                        android:orientation="vertical"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/materialTextView6">
 
@@ -367,8 +369,6 @@
                             android:id="@+id/realizedPnLField"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="8dp"
-                            android:layout_weight="1"
                             app:layout_constraintBottom_toBottomOf="@+id/materialTextView6"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="@+id/materialTextView6"
@@ -378,7 +378,7 @@
                             android:id="@+id/realizedPnLFieldPourcent"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:visibility="visible"
                             app:layout_constraintBottom_toBottomOf="@+id/materialTextView6"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/realizedPnLField"

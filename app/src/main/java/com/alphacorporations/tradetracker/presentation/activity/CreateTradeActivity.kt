@@ -4,6 +4,8 @@ import android.content.res.ColorStateList
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
+import android.widget.ArrayAdapter
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -31,8 +33,20 @@ class CreateTradeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = CreateTradeActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        init()
+        initAdapters()
         initListener()
         initObserver()
+
+    }
+
+    private fun init() {
+        binding.leverageCardView.backgroundTintList =
+            ColorStateList.valueOf(ContextCompat.getColor(this, R.color.red_50))
+    }
+
+    private fun initAdapters() {
 
     }
 
@@ -218,8 +232,17 @@ class CreateTradeActivity : AppCompatActivity() {
             }
 
             override fun afterTextChanged(p0: Editable?) {
+
                 if (binding.pnlRealizedET.text!!.isNotEmpty()) {
-                    viewModel.calculateRealizedPnL(p0.toString().toFloat())
+                    if (p0!!.any { it.isDigit() })
+                        if (p0!!.contains('-')) {
+                            viewModel.calculateRealizedPnL(
+                                -p0.toString().removePrefix("-").toFloat()
+                            )
+
+                        } else {
+                            viewModel.calculateRealizedPnL(p0.toString().toFloat())
+                        }
                 } else {
                     viewModel.calculateRealizedPnL(0f)
                 }
@@ -265,10 +288,11 @@ class CreateTradeActivity : AppCompatActivity() {
             if (it != 0f) {
                 binding.realizedPnLField.text = "${binding.pnlRealizedET.text} $"
                 binding.realizedPnLFieldPourcent.text = "(${String.format("%.2f", it)} %)"
+                binding.realizedPnLFieldPourcent.visibility = View.VISIBLE
             } else {
                 binding.realizedPnLField.text = "0 $"
-
                 binding.realizedPnLFieldPourcent.text = ""
+                binding.realizedPnLFieldPourcent.visibility = View.INVISIBLE
             }
         }
 
